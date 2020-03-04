@@ -68,7 +68,7 @@ public class ClientUDP {
           operand1, operand2);
 
       DatagramSocket sock = new DatagramSocket(destPort);  // UDP socket for sending/receiving
-      DatagramPacket packet = new DatagramPacket(new byte[1024],1024);
+      DatagramPacket packet = new DatagramPacket(new byte[7],7);
 
       // Use the encoding scheme given on the command line (args[2])
       RequestEncoder encoder = new RequestEncoderBin();
@@ -93,7 +93,12 @@ public class ClientUDP {
       long totalTime = (endTime - startTime);
       RequestDecoder decoder = new RequestDecoderBin();
       Response receivedResponse = decoder.decodeRes(packet);
-      System.out.println("Received Binary-Encoded Response:");
+      System.out.print("Message received in bytes:");
+      for (byte hexValue : packet.getData()) {
+        System.out.print(" 0x" + String.format("%02x", hexValue).toUpperCase()); // Prints each byte of outgoing packet
+      }
+      System.out.println(); // New line
+
       System.out.println(receivedResponse);
       // Print total time in milliseconds
       System.out.println("Response Time: " + (double) totalTime / 1000000 + " ms");
@@ -111,7 +116,7 @@ public class ClientUDP {
       sock.close();
 
       // Reset length to avoid shrinking buffer
-      packet.setLength(1024);
+      // packet.setLength(7);
 
       // Clears/Cleans-up console enviornment
       System.out.print("\033[H\033[2J");

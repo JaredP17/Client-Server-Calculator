@@ -20,7 +20,7 @@ public class ServerUDP {
       for (;;) {
       System.out.println("Waiting for request...\n");
       DatagramSocket sock = new DatagramSocket(port);  // UDP socket for sending/receiving
-      DatagramPacket packet = new DatagramPacket(new byte[1024],1024);
+      DatagramPacket packet = new DatagramPacket(new byte[7],7);
       sock.receive(packet);
 
       // Receive binary-encoded request
@@ -79,10 +79,10 @@ public class ServerUDP {
       sock.send(resPacket);
 
       // Close socket
-      sock.close();
+      //sock.close();
 
       // Reset length to avoid shrinking buffer
-      packet.setLength(1024);
+      //packet.setLength(1024);
     }
   }
 }
