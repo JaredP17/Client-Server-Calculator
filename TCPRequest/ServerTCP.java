@@ -76,6 +76,11 @@ public class ServerTCP {
       TCPRequestEncoder encoder = new TCPRequestEncoderBin();
 
       byte[] codedResponse = encoder.encode(response);
+      String str = "";
+      for (byte b : codedResponse) {
+        str += b;
+      }
+      System.out.println(str);
       OutputStream out = new DataOutputStream(clntSock.getOutputStream()); // Get a handle onto Output Stream
       out.write(codedResponse); // Encode and send
 
