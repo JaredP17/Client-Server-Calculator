@@ -8,3 +8,5 @@ The server offers the following operations:
 5. Shift Right (>>)
 6. Shift Left (<<)
 7. Not (~)
+
+Read the P4 (UDP) and P5 (TCP) reports to run the finished products.
