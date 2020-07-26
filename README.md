@@ -1,4 +1,4 @@
-# Client-Server-Calculator
+# Network-Calculator
 This calculating server performs bitwise boolean and arithmetic computations requested by a client on 16-bit signed integers. 
 The server offers the following operations: 
 1. Addition (+)
